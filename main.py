@@ -1,6 +1,7 @@
 import asyncio
 from fastmcp import FastMCP
-from middleware import AuthSessionMiddleware
+from middlewares.auth_middleware import AuthSessionMiddleware
+from middlewares.ratelimit_middleware import RateLimitMiddleware
 from tools.message_tool import (
     send_text_message_tool, 
     send_image_message_tool,
@@ -18,7 +19,8 @@ mcp = FastMCP(
     website_url="https://zappaz.io",
 )
 
-mcp.add_middleware(AuthSessionMiddleware(valid_tokens={"SEU_TOKEN"}))
+mcp.add_middleware(RateLimitMiddleware())
+mcp.add_middleware(AuthSessionMiddleware())
 
 mcp.add_tool(send_text_message_tool)
 mcp.add_tool(send_image_message_tool)

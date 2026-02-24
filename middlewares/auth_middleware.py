@@ -1,16 +1,11 @@
 # middleware.py
-import token
 from fastmcp.server.middleware import Middleware, MiddlewareContext
 from fastmcp.server.dependencies import get_http_request
 from fastmcp.exceptions import McpError
-
-
+from mcp.types import ErrorData
 
 
 class AuthSessionMiddleware(Middleware):
-    def __init__(self, valid_tokens: set[str]):
-        self.valid_tokens = valid_tokens
-
     async def on_request(self, context: MiddlewareContext, call_next):
         request = get_http_request()
 
@@ -18,10 +13,10 @@ class AuthSessionMiddleware(Middleware):
         session_id = request.query_params.get("sessionId") if request else None
 
         if not session_id:
-            raise McpError(message="Sem sessionId query param")
+            raise McpError(ErrorData(message="Sem sessionId na query", code=400))
 
         if not auth:
-            raise McpError(message="Sem Authorization header")
+            raise McpError(ErrorData(message="Sem Authorization header", code=401))
 
         # Armazena no context pra tools usarem
         if context.fastmcp_context:
