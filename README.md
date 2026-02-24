@@ -1,4 +1,3 @@
-
 # Zappaz MCP Server
 
 O Zappaz MCP Server conecta ferramentas MCP a Zappaz API de WhatsApp. Ele expoe
@@ -33,18 +32,17 @@ Sem esses valores o servidor retorna erro.
 
 ## Configuracao no OpenCode
 
-Adicione o servidor no seu `mcp.json` do OpenCode:
+Adicione o servidor no seu `opencode.json` do OpenCode:
 
 ```json
 {
-  "servers": {
-    "zappaz-mcp": {
-      "type": "remote",
-      "enabled": true,
-      "url": "https://mcp.zappaz.io/mcp?sessionId=YOUR_SESSION",
-      "headers": {
-        "Authorization": "YOUR_SESSION_TOKEN"
-      }
+  "$schema": "https://opencode.ai/config.json",
+  "zappaz-mcp": {
+    "type": "remote",
+    "enabled": true,
+    "url": "https://mcp.zappaz.io/mcp?sessionId=YOUR_SESSION",
+    "headers": {
+      "Authorization": "YOUR_SESSION_TOKEN"
     }
   }
 }
@@ -173,16 +171,16 @@ Adicione o servidor no seu arquivo de configuracao MCP:
 
 ## Tools disponiveis
 
-| Tool | Descricao |
-| --- | --- |
-| `send_text_message` | Envia mensagem de texto. |
-| `send_image_message` | Envia mensagem de imagem. |
-| `send_video_message` | Envia mensagem de video. |
-| `send_audio_message` | Envia mensagem de audio. |
-| `send_document_message` | Envia mensagem de documento. |
-| `send_contact_message` | Envia mensagem com contato. |
+| Tool                    | Descricao                       |
+| ----------------------- | ------------------------------- |
+| `send_text_message`     | Envia mensagem de texto.        |
+| `send_image_message`    | Envia mensagem de imagem.       |
+| `send_video_message`    | Envia mensagem de video.        |
+| `send_audio_message`    | Envia mensagem de audio.        |
+| `send_document_message` | Envia mensagem de documento.    |
+| `send_contact_message`  | Envia mensagem com contato.     |
 | `send_location_message` | Envia mensagem com localizacao. |
-| `delete_message` | Deleta uma mensagem por id. |
+| `delete_message`        | Deleta uma mensagem por id.     |
 
 ---
 
