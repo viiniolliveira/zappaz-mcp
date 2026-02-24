@@ -31,4 +31,4 @@ mcp.add_tool(delete_message_tool)
 
 
 if __name__ == "__main__":
-    asyncio.run(mcp.run_http_async(port=8001))
+    asyncio.run(mcp.run_http_async(port=8001, host="0.0.0.0"))
