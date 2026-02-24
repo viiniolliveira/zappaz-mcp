@@ -174,6 +174,8 @@ Adicione o servidor no seu arquivo de configuracao MCP:
 
 ## Tools disponiveis
 
+### Tool de Mensagens
+
 | Tool | Descricao |
 | --- | --- |
 | `send_text_message` | Envia mensagem de texto. |
@@ -184,6 +186,21 @@ Adicione o servidor no seu arquivo de configuracao MCP:
 | `send_contact_message` | Envia mensagem com contato. |
 | `send_location_message` | Envia mensagem com localizacao. |
 | `delete_message` | Deleta uma mensagem por id. |
+
+### Tool de Grupos
+
+| Tool | Descricao |
+| --- | --- |
+| `list_groups` | Lista todos os grupos da sessao. |
+| `get_group_participants` | Lista os participantes de um grupo. |
+| `create_group` | Cria um novo grupo. |
+| `add_participants` | Adiciona participantes a um grupo. |
+| `remove_participants` | Remove participantes de um grupo. |
+| `promote_participants` | Promove participantes a administradores. |
+| `demote_participants` | Rebaixa administradores a membros. |
+| `send_group_invite_link` | Envia o link de convite de um grupo. |
+| `update_group` | Atualiza nome, descricao e configuracoes do grupo. |
+| `update_group_picture` | Atualiza a foto do grupo. |
 
 ---
 

@@ -1,14 +1,5 @@
 from fastmcp import FastMCP, Context
-from zappaz.message import (
-    send_document_message,
-    send_text_message, 
-    send_image_message,
-    send_video_message,
-    send_audio_message,
-    send_contact_message,
-    send_location_message,
-    delete_message
-)
+from zappaz.message import *
 from schemas.message_schema import *
 
 mcp = FastMCP()

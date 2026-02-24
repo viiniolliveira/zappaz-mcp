@@ -7,15 +7,19 @@ from fastmcp.exceptions import McpError
 from mcp.types import ErrorData
 
 class RateLimitMiddleware(Middleware):
-    def __init__(self, limit: int = 5, window_seconds: int = 1):
+    def __init__(self, limit: int = 5, window_seconds: int = 1, max_keys: int = 1000):
         self.limit = limit
         self.window = window_seconds
+        self.max_keys = max_keys
         self._buckets: dict[str, deque[float]] = defaultdict(deque)
 
     async def on_request(self, context: MiddlewareContext, call_next):
         request = get_http_request()
         if not request:
             return await call_next(context)
+
+        if len(self._buckets) > self.max_keys:
+            self._buckets.clear()
 
         # chave do rate limit: sessionId (se existir) senão IP
         session_id = request.query_params.get("sessionId")

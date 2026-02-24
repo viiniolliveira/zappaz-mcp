@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 
 class TextMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     message: str = Field(..., description="Conteúdo da mensagem")
     mentions: Optional[List[str]] = Field(default_factory=list, description="Lista de números mencionados na mensagem, use uma lista vazia para não mencionar ninguém.")
     quoted: Optional[str] = Field(default_factory=str, description="ID da mensagem citada, se houver, para enviar como resposta. Use uma string vazia para não citar nenhuma mensagem.")
@@ -11,7 +11,7 @@ class TextMessage(BaseModel):
 
 
 class ImageMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     source: str = Field(..., description="URL ou Base64 da imagem a ser enviada")
     caption: Optional[str] = Field(None, description="Legenda para a imagem")
     fileName: Optional[str] = Field(None, description="Nome do arquivo da imagem")
@@ -21,17 +21,18 @@ class ImageMessage(BaseModel):
 
 
 class VideoMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     source: str = Field(..., description="URL ou Base64 do vídeo a ser enviado")
     caption: Optional[str] = Field(None, description="Legenda para o vídeo")
     fileName: Optional[str] = Field(None, description="Nome do arquivo do vídeo")
+    gifPlayback: Optional[bool] = Field(False, description="Indica se o vídeo deve ser reproduzido como GIF")
     mentions: Optional[List[str]] = Field(default_factory=list, description="Lista de números mencionados na mensagem, use uma lista vazia para não mencionar ninguém.")
     quoted: Optional[str] = Field(default_factory=str, description="ID da mensagem citada, se houver, para enviar como resposta. Use uma string vazia para não citar nenhuma mensagem.")
     delay: Optional[int] = Field(0, description="Tempo de atraso para resposta em milissegundos")
 
 
 class AudioMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     source: str = Field(..., description="URL ou Base64 do áudio a ser enviado")
     mentions: Optional[List[str]] = Field(default_factory=list, description="Lista de números mencionados na mensagem, use uma lista vazia para não mencionar ninguém.")
     quoted: Optional[str] = Field(default_factory=str, description="ID da mensagem citada, se houver, para enviar como resposta. Use uma string vazia para não citar nenhuma mensagem.")
@@ -39,7 +40,7 @@ class AudioMessage(BaseModel):
 
 
 class DocumentMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     source: str = Field(..., description="URL ou Base64 do documento a ser enviado")
     caption: Optional[str] = Field(None, description="Legenda para o documento")
     fileName: Optional[str] = Field(None, description="Nome do arquivo do documento")
@@ -54,7 +55,7 @@ class Contact(BaseModel):
     lastName: Optional[str] = Field(None, description="Último nome do contato")
 
 class ContactMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     contact: Contact = Field(..., description="Contato a ser enviado")
     delay: Optional[int] = Field(0, description="Tempo de atraso para resposta em milissegundos")
 
@@ -69,5 +70,5 @@ class Location(BaseModel):
     comment: Optional[str] = Field(None, description="Comentário sobre a localização")
 
 class LocationMessage(BaseModel):
-    number: str = Field(..., description="Número do remetente da mensagem")
+    number: str = Field(..., description="Número do remetente da mensagem ou Id do grupo")
     location: Location = Field(..., description="Localização a ser enviada")
