@@ -202,9 +202,17 @@ Adicione o servidor no seu arquivo de configuracao MCP:
 | `update_group` | Atualiza nome, descricao e configuracoes do grupo. |
 | `update_group_picture` | Atualiza a foto do grupo. |
 
----
+### Tool de Webhooks
+
+| Tool | Descricao |
+| --- | --- |
+| `get_webhooks` | Obtem a lista de webhooks configurados para uma sessao. |
+| `create_webhook` | Cria um novo webhook para uma sessao. |
+| `update_webhook` | Atualiza um webhook existente para uma sessao. |
+| `delete_webhook` | Deleta um webhook existente para uma sessao. |
 
 ---
+
 
 ## Observacoes
 
