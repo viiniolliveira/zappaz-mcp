@@ -26,6 +26,13 @@ from tools.group_tool import (
     update_group_picture_tool
 )
 
+from tools.webhook_tool import (
+    create_webhook_tool,
+    delete_webhook_tool,
+    get_webhooks_tool,
+    update_webhook_tool
+)
+
 mcp = FastMCP(
     name="Zappaz MCP",
     instructions="Este é um mcp server da zappaz api uma api de WhatsApp, que da acesso a todas as funcionalidades da zappaz",
@@ -57,6 +64,11 @@ mcp.add_tool(send_group_invite_link_tool)
 mcp.add_tool(update_group_tool)
 mcp.add_tool(update_group_picture_tool)
 
+# Webhook tools
+mcp.add_tool(get_webhooks_tool)
+mcp.add_tool(create_webhook_tool)
+mcp.add_tool(update_webhook_tool)
+mcp.add_tool(delete_webhook_tool)
 
 if __name__ == "__main__":
     asyncio.run(mcp.run_http_async(port=8001, host="0.0.0.0"))
